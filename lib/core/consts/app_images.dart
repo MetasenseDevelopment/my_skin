@@ -1,0 +1,21 @@
+class AppImages {
+  AppImages._();
+
+  static const String mySkinLogo = 'assets/images/my_skin_logo.png';
+  static const String avatar1 = 'assets/images/avatar1.png';
+  static const String avatar2 = 'assets/images/avatar2.png';
+  static const String avatar3 = 'assets/images/avatar3.png';
+  static const String userInfoImage = 'assets/images/userInfoImage.svg';
+  static const String userInfo1 = 'assets/images/userinfo1.png';
+  static const String userInfo2 = 'assets/images/userinfo2.png';
+  static const String userInfo3 = 'assets/images/userinfo3.png';
+  static const String importance = 'assets/images/importance.png';
+
+  // Carousel order: 2 → 3 → 1
+  static const List<String> userInfoCarousel = [
+    userInfo2,
+
+    userInfo3,
+    userInfo1,
+  ];
+}
