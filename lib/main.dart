@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:my_skin/view_models/introduction_view_model.dart';
+import 'package:my_skin/view_models/scan_view_model.dart';
+import 'package:my_skin/view_models/camera_view_model.dart';
+import 'package:my_skin/view_models/analysis_view_model.dart';
+import 'package:my_skin/views/introduction_screen/introduction_screen.dart';
 import 'package:provider/provider.dart';
 import 'core/consts/app_colors.dart';
 import 'core/consts/app_fonts.dart';
@@ -7,7 +12,6 @@ import 'view_models/welcome_view_model.dart';
 import 'view_models/user_info_view_model.dart';
 import 'view_models/quote_view_model.dart';
 import 'view_models/importance_view_model.dart';
-import 'views/welcome_screen/welcome_screen.dart';
 
 void main() {
   runApp(
@@ -17,6 +21,10 @@ void main() {
         ChangeNotifierProvider(create: (_) => UserInfoViewModel()),
         ChangeNotifierProvider(create: (_) => QuoteViewModel()),
         ChangeNotifierProvider(create: (_) => ImportanceViewModel()),
+        ChangeNotifierProvider(create: (_) => IntroductionViewModel()),
+        ChangeNotifierProvider(create: (_) => ScanViewModel()),
+        ChangeNotifierProvider(create: (_) => CameraViewModel()),
+        ChangeNotifierProvider(create: (_) => AnalysisViewModel()),
       ],
       child: const MySkinApp(),
     ),
@@ -41,7 +49,7 @@ class MySkinApp extends StatelessWidget {
             fontFamily: AppFonts.lato,
             scaffoldBackgroundColor: AppColors.white,
           ),
-          home: const WelcomeScreen(),
+          home: const IntroductionScreen(),
         );
       },
     );

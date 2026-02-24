@@ -18,6 +18,7 @@ class AppColors {
   static const Color hintGrey = Color(0xFFBBBBBB);
   static const Color disabledGrey = Color(0xFFF2F2F2);
   static const Color disabledTextGrey = Color(0xFFCCCCCC);
+  static const Color yellowColor = Color(0xFFD3A860);
 
   static const Gradient primaryGradient = LinearGradient(
     begin: Alignment.topCenter,
@@ -28,4 +29,16 @@ class AppColors {
   // Shadows
   static Color goldShadow = gold.withValues(alpha: 0.4);
   static Color blackShadow = Colors.black.withValues(alpha: 0.1);
+
+  // Full Report Colors
+  static const Color reportRed = Color(0xFFD32F2F);
+  static const Color progressBg = Color(0xFFEEEEEE);
+  static const Color progressGreen = Color(0xFF4CAF50);
+  static const Color progressRed = Color(0xFFE53935);
+  static const Color sectionTitleBrown = Color(0xFFC07C5D);
+  static const Color tagMediumBg = Color(0xFFFFF3E0);
+  static const Color tagMediumText = Color(0xFFE65100);
+  static const Color tagLowBg = Color(0xFFE8F5E9);
+  static const Color tagLowText = Color(0xFF2E7D32);
+  static const Color quoteBg = Color(0xFFF9F9F9);
 }

@@ -105,4 +105,74 @@ class AppStrings {
   static const String importanceFooter =
       'Your journey to healthier,\nmore confident skin starts\nwith MySkin.';
   static const String backButton = 'Back';
+
+  // Introduction screen
+  static const String introductionTitle =
+      'Let\'s take a\nfew minutes to\nunderstand\nyour skin.';
+  static const String introductionSubtitle =
+      'Because, skin is\nnot one-size-fits-all.';
+  static const String introductionDescription =
+      'We combine your answers with visual\nskin analysis to understand your skin\nclearly, so insights and plans are\ntailored to you — not assumptions.';
+  static const String letsGoButton = 'Lets Go';
+
+  // Scan screen
+  static const String scanSubtitle = 'LET\'S SCAN YOUR SKIN';
+  static const String scanTitle =
+      'We\'ll take a quick\nlook at your skin\nto understand its\ncondition.';
+  static const String scanBullet1 = 'Takes less than 10 seconds';
+  static const String scanBullet2 = 'Requires good lighting';
+  static const String slideText = 'Slide to scan image';
+
+  // Analysis screen
+  static const String analysisTitle = 'ANALYSIS';
+  static const String analyzingText = 'Analyzing skin texture';
+  static const String analysisSubtext =
+      'Hold on while\nwe understand\nyour skin a little better.';
+
+  // Analysis result screen
+  static const String estimatedSkinAge = 'ESTIMATED SKIN AGE';
+  static const String ageValue = '24';
+  static const String ageUnit = 'years';
+  static const String ageComparison = 'YOUNGER THAN ACTUAL AGE';
+  static const String analysisSummaryTitle = 'ANALYSIS SUMMARY';
+  static const String analysisSummaryText =
+      'Our neural engine has identified subtle markers\nof resilience and maturity within your dermal\nlattice. This estimate reflects your current\nbiological skin vitality.';
+  static const String viewFullReport = 'View Full Report';
+
+  // Full Report screen
+  static const String skinScoreTitle = 'SKIN SCORE';
+  static const String issuesFoundTitle = 'ISSUES FOUND';
+  static const String frontView = 'FRONT VIEW';
+  static const String frAnalysisSummaryTitle = 'Analysis Summary';
+  static const String frAnalysisSummaryText =
+      'Your skin presents with active breakouts and moderately\nvisible pores, indicating a combination skin type.\nAddressing these concerns with a targeted routine can\nsignificantly enhance your skin\'s clarity and texture.';
+  static const String skinMetricsTitle = 'SKIN METRICS';
+  static const String textureLabel = 'Texture';
+  static const String hydrationLabel = 'Hydration';
+  static const String glowLabel = 'Glow';
+  static const String detailedFindingsTitle = 'Detailed Findings';
+  static const String acneBreakoutsTitle = 'Acne/Breakouts';
+  static const String mediumSeverity = 'MEDIUM';
+  static const String acneBreakoutsText =
+      'Multiple active papules and pustules are observed on the forehead, cheeks, and chin, indicating ongoing inflammatory breakouts.';
+  static const String acneBreakoutsQuote =
+      '"Incorporate a gentle cleanser with salicylic acid.\nFor targeted treatment, consider a topical\nretinoid like adapalene or benzoyl peroxide to\nreduce inflammation and prevent new lesions."';
+  static const String enlargedPoresTitle = 'Enlarged Pores';
+  static const String lowSeverity = 'LOW';
+  static const String enlargedPoresText =
+      'Pores appear somewhat visible, particularly around the nose and central forehead, which is common with combination skin types.';
+  static const String enlargedPoresQuote =
+      '"Regular exfoliation with Beta Hydroxy Acids\n(BHAs) such as salicylic acid can help keep pores\nclear. Using a non-comedogenic moisturizer will\nalso support overall skin texture."';
+  static const String darkCirclesTitle = 'Dark Circles';
+  static const String darkCirclesText =
+      'Dark circles are mildly visible around the under-eye area, often influenced by factors like fatigue, pigmentation, or thinning skin, which is common across many skin types.';
+  static const String darkCirclesQuote =
+      '"Consistent use of targeted under-eye care with\ningredients like caffeine, niacinamide, or vitamin\nC can help improve the appearance of dark\ncircles. Keeping the under-eye area well-hydrated\nalso supports smoother, brighter-looking skin."';
+
+  // Empathy screen
+  static const String empathyTitle1 = 'Every skin\nhas its own\n';
+  static const String empathyTitleItalic = 'challenges\n';
+  static const String empathyTitle2 = '& that\'s\ncompletely\nnormal.';
+  static const String empathyText =
+      'MySkin helps guide\nyou gently & effectively\ntowards a clearer,\nhealthier, more\nconfident skin';
 }

@@ -10,6 +10,13 @@ class AppImages {
   static const String userInfo2 = 'assets/images/userinfo2.png';
   static const String userInfo3 = 'assets/images/userinfo3.png';
   static const String importance = 'assets/images/importance.png';
+  static const String introductionImage =
+      'assets/images/introduction_image.png';
+  static const String introSmallImage = 'assets/images/intro_small_image.png';
+  static const String camera = 'assets/images/camera.png';
+  static const String roseLogo = 'assets/images/rose_logo.png';
+  static const String empathyBg = 'assets/images/empathyScreenBG.png';
+  static const String empathyCard = 'assets/images/empathycardImage.png';
 
   // Carousel order: 2 → 3 → 1
   static const List<String> userInfoCarousel = [

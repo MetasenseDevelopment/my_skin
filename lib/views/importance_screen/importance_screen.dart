@@ -5,6 +5,7 @@ import '../../core/consts/app_colors.dart';
 import '../../core/consts/app_fonts.dart';
 import '../../core/consts/app_images.dart';
 import '../../view_models/importance_view_model.dart';
+import '../../core/utils/widgets/glassy_app_bar.dart';
 
 class ImportanceScreen extends StatelessWidget {
   const ImportanceScreen({super.key});
@@ -12,6 +13,8 @@ class ImportanceScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: const GlassyAppBar(),
       body: Consumer<ImportanceViewModel>(
         builder: (context, viewModel, child) {
           final data = viewModel.data;
@@ -25,51 +28,31 @@ class ImportanceScreen extends StatelessWidget {
                 width: double.infinity,
                 height: double.infinity,
               ),
-
-              // Gradient overlay for bottom readability
-              Positioned(
-                left: 0,
-                right: 0,
-                bottom: 0,
-                height: 280.h,
-                child: DecoratedBox(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                        Colors.black.withValues(alpha: 0.0),
-                        Colors.black.withValues(alpha: 0.6),
-                        Colors.black.withValues(alpha: 0.85),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
+              //
 
               // Content overlay
               SafeArea(
-                child: Padding(
+        top: false,
+        child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 24.w),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      60.verticalSpace,
+                      48.verticalSpace,
 
                       // Main title
                       Text(
                         data.title,
                         style: TextStyle(
                           fontFamily: AppFonts.playfairDisplay,
-                          fontSize: 36.sp,
+                          fontSize: 40.sp,
                           fontWeight: FontWeight.w400,
-                          fontStyle: FontStyle.italic,
                           color: AppColors.white,
                           height: 1.15,
                         ),
                       ),
 
-                      24.verticalSpace,
+                      40.verticalSpace,
 
                       // "MySkin helps you take control."
                       RichText(
@@ -79,7 +62,7 @@ class ImportanceScreen extends StatelessWidget {
                               text: data.mySkinText,
                               style: TextStyle(
                                 fontFamily: AppFonts.playfairDisplay,
-                                fontSize: 36.sp,
+                                fontSize: 40.sp,
                                 fontWeight: FontWeight.w700,
                                 fontStyle: FontStyle.italic,
                                 color: AppColors.white,
@@ -90,9 +73,8 @@ class ImportanceScreen extends StatelessWidget {
                               text: data.subtitle,
                               style: TextStyle(
                                 fontFamily: AppFonts.playfairDisplay,
-                                fontSize: 36.sp,
+                                fontSize: 40.sp,
                                 fontWeight: FontWeight.w400,
-                                fontStyle: FontStyle.italic,
                                 color: AppColors.white,
                                 height: 1.15,
                               ),
@@ -110,9 +92,7 @@ class ImportanceScreen extends StatelessWidget {
                           data.footer,
                           textAlign: TextAlign.right,
                           style: TextStyle(
-                            fontFamily: AppFonts.playfairDisplay,
-                            fontSize: 16.sp,
-                            fontStyle: FontStyle.italic,
+                            fontSize: 20.sp,
                             fontWeight: FontWeight.w400,
                             color: AppColors.white,
                             height: 1.5,
@@ -163,8 +143,8 @@ class ImportanceScreen extends StatelessWidget {
                                   // TODO: Navigate to next screen
                                 },
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: AppColors.white,
-                                  foregroundColor: AppColors.black,
+                                  backgroundColor: AppColors.black,
+                                  foregroundColor: AppColors.white,
                                   elevation: 0,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(12.r),
