@@ -12,6 +12,7 @@ class AppColors {
   static const Color black = Colors.black;
   static const Color black87 = Color(0xff1C1C1C);
   static const Color black54 = Colors.black54;
+  static const Color grey = Color(0xffC9C9C9);
   static const Color darkGrey = Color(0xff6B6B6B);
   static const Color accentYellow = Color(0xFFF3D652);
   static const Color lightGrey = Color(0xFFE8E8E8);
@@ -34,8 +35,10 @@ class AppColors {
   static const Color reportRed = Color(0xFFD32F2F);
   static const Color progressBg = Color(0xFFEEEEEE);
   static const Color progressGreen = Color(0xFF4CAF50);
+  static const Color darkGreen = Color(0xFF4D8937);
   static const Color progressRed = Color(0xFFE53935);
   static const Color sectionTitleBrown = Color(0xFFC07C5D);
+  static const Color orange = Color(0xFFC1784D);
   static const Color tagMediumBg = Color(0xFFFFF3E0);
   static const Color tagMediumText = Color(0xFFE65100);
   static const Color tagLowBg = Color(0xFFE8F5E9);

@@ -9,7 +9,6 @@ import '../../view_models/scan_view_model.dart';
 import 'widgets/scan_slider_button.dart';
 import 'widgets/animated_camera_image.dart';
 import '../camera_screen/camera_screen.dart';
-import '../../core/utils/widgets/glassy_app_bar.dart';
 
 class ScanScreen extends StatelessWidget {
   const ScanScreen({super.key});
@@ -18,7 +17,6 @@ class ScanScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: const GlassyAppBar(),
       backgroundColor: AppColors.black87,
       body: SafeArea(
         top: false,
@@ -30,7 +28,7 @@ class ScanScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  40.verticalSpace,
+                  125.verticalSpace,
 
                   // Animated Camera Image
                   const AnimatedCameraImage(),

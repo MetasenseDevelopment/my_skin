@@ -9,7 +9,6 @@ import 'widgets/age_dropdown.dart';
 import 'widgets/next_button.dart';
 import 'widgets/image_carousel.dart';
 import '../importance_screen/importance_screen.dart';
-import '../../core/utils/widgets/glassy_app_bar.dart';
 
 class UserInfoScreen extends StatelessWidget {
   const UserInfoScreen({super.key});
@@ -18,7 +17,6 @@ class UserInfoScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: const GlassyAppBar(),
       backgroundColor: AppColors.white,
       body: Consumer<UserInfoViewModel>(
         builder: (context, viewModel, child) {

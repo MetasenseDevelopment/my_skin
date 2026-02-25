@@ -5,7 +5,6 @@ import '../../core/consts/app_colors.dart';
 import '../../core/consts/app_fonts.dart';
 import '../../core/consts/app_images.dart';
 import '../../view_models/importance_view_model.dart';
-import '../../core/utils/widgets/glassy_app_bar.dart';
 
 class ImportanceScreen extends StatelessWidget {
   const ImportanceScreen({super.key});
@@ -14,7 +13,6 @@ class ImportanceScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: const GlassyAppBar(),
       body: Consumer<ImportanceViewModel>(
         builder: (context, viewModel, child) {
           final data = viewModel.data;
@@ -32,8 +30,8 @@ class ImportanceScreen extends StatelessWidget {
 
               // Content overlay
               SafeArea(
-        top: false,
-        child: Padding(
+                top: false,
+                child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 24.w),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

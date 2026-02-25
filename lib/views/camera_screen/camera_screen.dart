@@ -9,7 +9,6 @@ import '../../core/consts/app_fonts.dart';
 import '../../core/consts/app_icons.dart';
 import '../../view_models/camera_view_model.dart';
 import '../analysis_screen/analysis_screen.dart';
-import '../../core/utils/widgets/glassy_app_bar.dart';
 
 class CameraScreen extends StatefulWidget {
   const CameraScreen({super.key});
@@ -42,7 +41,6 @@ class _CameraScreenState extends State<CameraScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: const GlassyAppBar(),
       backgroundColor: Colors.black, // true black for camera background
       body: Consumer<CameraViewModel>(
         builder: (context, viewModel, child) {

@@ -1,14 +1,13 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:my_skin/views/analysis_screen/analysis_result_screen.dart';
 import 'package:provider/provider.dart';
 import '../../core/consts/app_colors.dart';
 import '../../core/consts/app_fonts.dart';
 import '../../view_models/analysis_view_model.dart';
 import '../../view_models/camera_view_model.dart';
-import 'analysis_result_screen.dart';
 import 'widgets/analysis_loading_dots.dart';
-import '../../core/utils/widgets/glassy_app_bar.dart';
 
 class AnalysisScreen extends StatefulWidget {
   const AnalysisScreen({super.key});
@@ -45,7 +44,6 @@ class _AnalysisScreenState extends State<AnalysisScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: const GlassyAppBar(),
       backgroundColor: AppColors.black87,
       body: SafeArea(
         top: false,
@@ -56,7 +54,7 @@ class _AnalysisScreenState extends State<AnalysisScreen> {
                 // === Large vertical "ANALYSIS" text on the right ===
                 Positioned(
                   right: -15.w,
-                  top: 20.h,
+                  top: 70.h,
                   bottom: 0,
                   child: RotatedBox(
                     quarterTurns: 1,
@@ -64,11 +62,10 @@ class _AnalysisScreenState extends State<AnalysisScreen> {
                       viewModel.analysisTitle,
                       style: TextStyle(
                         fontFamily: AppFonts.playfairDisplay,
-                        fontSize: 120.sp,
+                        fontSize: 100.sp,
                         fontWeight: FontWeight.w400,
-                        color: AppColors.yellowColor.withValues(alpha: 0.3),
-                        letterSpacing: 32,
-                        height: 1.0,
+                        color: AppColors.yellowColor.withValues(alpha: 0.68),
+                        letterSpacing: 50,
                       ),
                     ),
                   ),
@@ -77,11 +74,11 @@ class _AnalysisScreenState extends State<AnalysisScreen> {
                 // === Main Content Column ===
                 Column(
                   children: [
-                    Spacer(flex: 1),
+                    196.verticalSpace,
 
                     // === Image Carousel (Rise Baby pattern) ===
                     SizedBox(
-                      height: 340.h,
+                      height: 380.h,
                       width: double.infinity,
                       child: Stack(
                         alignment: Alignment.center,
@@ -102,7 +99,7 @@ class _AnalysisScreenState extends State<AnalysisScreen> {
                             viewModel.analyzingText,
                             style: TextStyle(
                               fontFamily: AppFonts.lato,
-                              fontSize: 16.sp,
+                              fontSize: 18.sp,
                               fontWeight: FontWeight.w400,
                               color: AppColors.yellowColor,
                             ),
@@ -122,9 +119,9 @@ class _AnalysisScreenState extends State<AnalysisScreen> {
                           viewModel.analysisSubtext,
                           style: TextStyle(
                             fontFamily: AppFonts.lato,
-                            fontSize: 22.sp,
+                            fontSize: 20.sp,
                             fontWeight: FontWeight.w400,
-                            color: AppColors.hintGrey,
+                            color: AppColors.grey,
                             height: 1.4,
                           ),
                         ),
@@ -144,13 +141,13 @@ class _AnalysisScreenState extends State<AnalysisScreen> {
 
   List<Widget> _buildAnimatedCards(AnalysisViewModel viewModel) {
     final screenWidth = MediaQuery.of(context).size.width;
-    final cardWidth = 200.w;
-    final cardHeight = 280.h;
+    final cardWidth = 240.w;
+    final cardHeight = 350.h;
 
     final centerX = (screenWidth - cardWidth) / 2;
     // Half off-screen positions
-    final rightX = screenWidth - (cardWidth / 2) - 10.w;
-    final leftX = -(cardWidth / 2) + 10.w;
+    final rightX = screenWidth - (cardWidth / 2) + 10.w;
+    final leftX = -(cardWidth / 2) - 10.w;
 
     final allPaths = [
       viewModel.frontImagePath,
@@ -206,12 +203,12 @@ class _AnalysisScreenState extends State<AnalysisScreen> {
 
       return AnimatedPositioned(
         key: ValueKey(cardData['id']),
-        duration: const Duration(milliseconds: 1000),
+        duration: const Duration(milliseconds: 2200),
         curve: Curves.easeInOutBack,
         left: left,
         top: 0,
         child: AnimatedScale(
-          duration: const Duration(milliseconds: 1000),
+          duration: const Duration(milliseconds: 2200),
           curve: Curves.easeInOutBack,
           scale: scale,
           child: Container(

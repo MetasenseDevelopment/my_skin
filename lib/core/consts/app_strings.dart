@@ -145,7 +145,7 @@ class AppStrings {
   static const String frontView = 'FRONT VIEW';
   static const String frAnalysisSummaryTitle = 'Analysis Summary';
   static const String frAnalysisSummaryText =
-      'Your skin presents with active breakouts and moderately\nvisible pores, indicating a combination skin type.\nAddressing these concerns with a targeted routine can\nsignificantly enhance your skin\'s clarity and texture.';
+      'Your skin presents with active breakouts and moderately visible pores, indicating a combination skin type. Addressing these concerns with a targeted routine can significantly enhance your skin\'s clarity and texture.';
   static const String skinMetricsTitle = 'SKIN METRICS';
   static const String textureLabel = 'Texture';
   static const String hydrationLabel = 'Hydration';

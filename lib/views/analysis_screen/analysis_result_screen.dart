@@ -1,3 +1,4 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../core/consts/app_colors.dart';
@@ -5,7 +6,6 @@ import '../../core/consts/app_fonts.dart';
 import '../../core/consts/app_images.dart';
 import '../../core/consts/app_strings.dart';
 import 'analysis_full_report_screen.dart';
-import '../../core/utils/widgets/glassy_app_bar.dart';
 
 class AnalysisResultScreen extends StatelessWidget {
   const AnalysisResultScreen({super.key});
@@ -14,7 +14,6 @@ class AnalysisResultScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: const GlassyAppBar(),
       backgroundColor: AppColors.white,
       body: Stack(
         children: [
@@ -26,7 +25,8 @@ class AnalysisResultScreen extends StatelessWidget {
             child: Center(
               child: Image.asset(
                 AppImages.roseLogo, // Using the existing rose logo
-                width: 320.w,
+                width: 378.w,
+                height: 386.h,
                 fit: BoxFit.contain,
               ),
             ),
@@ -36,42 +36,42 @@ class AnalysisResultScreen extends StatelessWidget {
           Positioned(
             top: 400.h,
             right: -40.w,
-            child: Opacity(
-              opacity: 0.6,
-              child: Image.asset(AppImages.roseLogo, width: 100.w),
+            child: ImageFiltered(
+              imageFilter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
+              child: Image.asset(AppImages.roseLogo, width: 95.w, height: 95.h),
             ),
           ),
           Positioned(
             top: 500.h,
             left: -40.w,
-            child: Opacity(
-              opacity: 0.5,
-              child: Image.asset(AppImages.roseLogo, width: 80.w),
+            child: ImageFiltered(
+              imageFilter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
+              child: Image.asset(AppImages.roseLogo, width: 77.w, height: 77.h),
             ),
           ),
 
           // 2. Main Content
           SafeArea(
-        top: false,
-        child: Padding(
+            top: false,
+            child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 24.w),
               child: Column(
                 children: [
-                  Spacer(flex: 4),
+                  343.verticalSpace,
 
                   // "ESTIMATED SKIN AGE"
                   Text(
                     AppStrings.estimatedSkinAge,
                     style: TextStyle(
-                      fontFamily: AppFonts.lato,
-                      fontSize: 14.sp,
-                      color: AppColors.hintGrey,
+                      fontFamily: AppFonts.playfairDisplay,
+                      fontSize: 18.sp,
+                      color: AppColors.darkGrey,
                       letterSpacing: 2,
                       fontWeight: FontWeight.w400,
                     ),
                   ),
 
-                  16.verticalSpace,
+                  10.verticalSpace,
 
                   // "24 years"
                   Text(
@@ -79,10 +79,11 @@ class AnalysisResultScreen extends StatelessWidget {
                     style: TextStyle(
                       fontFamily: AppFonts.playfairDisplay,
                       fontSize: 100.sp,
-                      color: AppColors.black,
+                      color: AppColors.black87,
                       height: 1.0,
                     ),
                   ),
+                  5.verticalSpace,
                   Text(
                     AppStrings.ageUnit,
                     style: TextStyle(
@@ -102,15 +103,17 @@ class AnalysisResultScreen extends StatelessWidget {
                       vertical: 12.h,
                     ),
                     decoration: BoxDecoration(
-                      color: const Color(0xFFE8F5E9), // Light green bg
-                      borderRadius: BorderRadius.circular(24.r),
+                      gradient: const LinearGradient(
+                        colors: [Color(0xFFDFF3DA), Color(0xFFBDE7B0)],
+                      ),
+                      borderRadius: BorderRadius.circular(39.r),
                     ),
                     child: Text(
                       AppStrings.ageComparison,
                       style: TextStyle(
                         fontFamily: AppFonts.lato,
-                        fontSize: 12.sp,
-                        color: const Color(0xFF2E7D32), // Darker green text
+                        fontSize: 16.sp,
+                        color: AppColors.darkGreen,
                         letterSpacing: 1,
                         fontWeight: FontWeight.w600,
                       ),
@@ -125,11 +128,8 @@ class AnalysisResultScreen extends StatelessWidget {
                     padding: EdgeInsets.all(24.w),
                     decoration: BoxDecoration(
                       color: AppColors.white,
-                      borderRadius: BorderRadius.circular(24.r),
-                      border: Border.all(
-                        color: AppColors.hintGrey.withValues(alpha: 0.2),
-                        width: 1,
-                      ),
+                      borderRadius: BorderRadius.circular(30.r),
+                      border: Border.all(color: AppColors.grey, width: 0.5),
                       boxShadow: [
                         BoxShadow(
                           color: Colors.black.withValues(alpha: 0.05),
@@ -144,21 +144,20 @@ class AnalysisResultScreen extends StatelessWidget {
                           AppStrings.analysisSummaryTitle,
                           style: TextStyle(
                             fontFamily: AppFonts.lato,
-                            fontSize: 14.sp,
-                            color: AppColors.black,
+                            fontSize: 16.sp,
+                            color: AppColors.black87,
                             letterSpacing: 3,
                             fontWeight: FontWeight.w600,
                           ),
                         ),
-                        20.verticalSpace,
+                        16.verticalSpace,
                         Text(
                           AppStrings.analysisSummaryText,
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontFamily: AppFonts.lato,
                             fontSize: 16.sp,
-                            color: AppColors.hintGrey,
-                            height: 1.5,
+                            color: AppColors.darkGrey,
                             fontWeight: FontWeight.w400,
                           ),
                         ),
@@ -169,9 +168,20 @@ class AnalysisResultScreen extends StatelessWidget {
                   Spacer(flex: 1),
 
                   // "View Full Report" Bottom Button
-                  SizedBox(
+                  Container(
                     width: double.infinity,
                     height: 64.h,
+                    decoration: BoxDecoration(
+                      color: AppColors.black87,
+                      borderRadius: BorderRadius.circular(16.r),
+                      boxShadow: [
+                        BoxShadow(
+                          color: AppColors.blackShadow.withValues(alpha: 0.25),
+                          blurRadius: 20,
+                          offset: const Offset(0, 10),
+                        ),
+                      ],
+                    ),
                     child: ElevatedButton(
                       onPressed: () {
                         Navigator.push(
@@ -183,12 +193,12 @@ class AnalysisResultScreen extends StatelessWidget {
                         );
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColors.black,
+                        backgroundColor: Colors.transparent,
+                        shadowColor: Colors.transparent,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(16.r),
                         ),
-                        elevation: 5,
-                        shadowColor: Colors.black.withValues(alpha: 0.3),
+                        elevation: 0,
                       ),
                       child: Text(
                         AppStrings.viewFullReport,

@@ -7,7 +7,6 @@ import '../../core/consts/app_colors.dart';
 import '../../core/consts/app_fonts.dart';
 import '../../core/consts/app_images.dart';
 import '../../view_models/introduction_view_model.dart';
-import '../../core/utils/widgets/glassy_app_bar.dart';
 
 class IntroductionScreen extends StatelessWidget {
   const IntroductionScreen({super.key});
@@ -16,7 +15,6 @@ class IntroductionScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: const GlassyAppBar(),
       body: Consumer<IntroductionViewModel>(
         builder: (context, viewModel, child) {
           final data = viewModel.data;
@@ -33,13 +31,13 @@ class IntroductionScreen extends StatelessWidget {
 
               // Content overlay
               SafeArea(
-        top: false,
-        child: Padding(
+                top: false,
+                child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 24.w),
                   child: Column(
                     children: [
                       // Spacer at the top (optional, depending on safe area)
-                      24.verticalSpace,
+                      76.verticalSpace,
 
                       // Glassy Container
                       Expanded(

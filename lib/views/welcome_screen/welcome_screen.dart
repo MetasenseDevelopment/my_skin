@@ -7,7 +7,6 @@ import '../../core/consts/app_images.dart';
 import '../../view_models/welcome_view_model.dart';
 import '../../widgets/quote_widget.dart';
 import '../user_info_screen/user_info_screen.dart';
-import '../../core/utils/widgets/glassy_app_bar.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -16,14 +15,13 @@ class WelcomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: const GlassyAppBar(),
       backgroundColor: AppColors.white,
       body: Consumer<WelcomeViewModel>(
         builder: (context, viewModel, child) {
           final data = viewModel.data;
           return SafeArea(
-        top: false,
-        child: Padding(
+            top: false,
+            child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 32.w),
               child: Column(
                 children: [

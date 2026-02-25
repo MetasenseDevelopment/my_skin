@@ -5,40 +5,71 @@ import 'package:provider/provider.dart';
 import '../../core/consts/app_colors.dart';
 import '../../core/consts/app_fonts.dart';
 import '../../core/consts/app_strings.dart';
-import '../../core/utils/widgets/glassy_app_bar.dart';
+
 import '../../view_models/analysis_view_model.dart';
 import '../empathy_screen/empathy_screen.dart';
 
-class AnalysisFullReportScreen extends StatelessWidget {
+class AnalysisFullReportScreen extends StatefulWidget {
   const AnalysisFullReportScreen({super.key});
+
+  @override
+  State<AnalysisFullReportScreen> createState() =>
+      _AnalysisFullReportScreenState();
+}
+
+class _AnalysisFullReportScreenState extends State<AnalysisFullReportScreen> {
+  int _currentIndex = 0;
+  final PageController _pageController = PageController();
+
+  final List<String> _viewTitles = [
+    AppStrings.frontView,
+    'RIGHT VIEW',
+    'LEFT VIEW',
+  ];
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.white,
       extendBodyBehindAppBar: true,
-      appBar: const GlassyAppBar(),
       body: SafeArea(
-        top: false,
-        bottom: true,
-        child: Column(
+        top: true,
+        bottom: false,
+        child: Stack(
           children: [
-            Expanded(
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    _buildHeaderArea(context),
-                    _buildSummary(),
-                    _buildMetrics(),
-                    _buildFindings(),
-                  ],
-                ),
+            SingleChildScrollView(
+              padding: EdgeInsets.only(bottom: 120.h), // Extra space for button
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _buildHeaderArea(context),
+                  40.verticalSpace,
+                  _buildSummary(),
+                  _buildMetrics(),
+                  _buildFindings(),
+                ],
               ),
             ),
-            Padding(
-              padding: EdgeInsets.only(top: 12.h, bottom: 12.h),
-              child: _buildNextButton(context),
+            Positioned(
+              left: 0,
+              right: 0,
+              bottom: 0,
+              child: Container(
+                padding: EdgeInsets.only(
+                  top: 16.h,
+                  bottom: MediaQuery.of(context).padding.bottom > 0
+                      ? MediaQuery.of(context).padding.bottom + 12.h
+                      : 24.h,
+                ),
+                color: Colors.transparent, // Fully transparent so data shows
+                child: _buildNextButton(context),
+              ),
             ),
           ],
         ),
@@ -47,180 +78,220 @@ class AnalysisFullReportScreen extends StatelessWidget {
   }
 
   Widget _buildHeaderArea(BuildContext context) {
-    return SizedBox(
-      height: 480.h,
-      width: double.infinity,
-      child: Consumer<AnalysisViewModel>(
-        builder: (context, vm, child) {
-          return Stack(
-            children: [
-              // 1. The central image with highly rounded corners
-              Positioned(
-                top: 0,
-                left: 16.w,
-                right: 16.w,
-                bottom: 24.h,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(40.r),
-                  child: vm.frontImagePath != null
-                      ? Image.file(File(vm.frontImagePath!), fit: BoxFit.cover)
-                      : Container(color: Colors.grey.shade300),
-                ),
-              ),
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 16.w),
+      child: SizedBox(
+        height: 520.h,
+        width: double.infinity,
+        child: Consumer<AnalysisViewModel>(
+          builder: (context, vm, child) {
+            // Get available images
+            List<String?> images = [
+              vm.frontImagePath,
+              vm.rightImagePath,
+              vm.leftImagePath,
+            ];
 
-              // 2. Left White Overlay Cutout (S-Curve Illusion)
-              Positioned(
-                top: 0,
-                left: 0,
-                width: 130.w,
-                height: 80.h,
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: AppColors.white,
-                    borderRadius: BorderRadius.only(
-                      bottomRight: Radius.circular(40.r),
+            return ClipRRect(
+              borderRadius: BorderRadius.circular(40.r),
+              child: Stack(
+                children: [
+                  // 1. Central PageView for images
+                  Positioned.fill(
+                    child: PageView.builder(
+                      controller: _pageController,
+                      onPageChanged: (index) {
+                        setState(() {
+                          _currentIndex = index;
+                        });
+                      },
+                      itemCount: images.length,
+                      itemBuilder: (context, index) {
+                        final path = images[index];
+                        return path != null
+                            ? Image.file(File(path), fit: BoxFit.cover)
+                            : Container(color: Colors.grey.shade300);
+                      },
                     ),
                   ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "72",
-                        style: TextStyle(
-                          fontFamily: AppFonts.playfairDisplay,
-                          fontSize: 48.sp,
-                          color: AppColors.black,
-                          height: 1.0,
-                        ),
-                      ),
-                      Text(
-                        AppStrings.skinScoreTitle,
-                        style: TextStyle(
-                          fontFamily: AppFonts.lato,
-                          fontSize: 10.sp,
-                          color: AppColors.black,
-                          letterSpacing: 1,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
 
-              // 3. Right White Overlay Cutout
-              Positioned(
-                top: 0,
-                right: 0,
-                width: 130.w,
-                height: 80.h,
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: AppColors.white,
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(40.r),
-                    ),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "03",
-                        style: TextStyle(
-                          fontFamily: AppFonts.playfairDisplay,
-                          fontSize: 48.sp,
-                          color: AppColors.reportRed,
-                          height: 1.0,
-                        ),
-                      ),
-                      Text(
-                        AppStrings.issuesFoundTitle,
-                        style: TextStyle(
-                          fontFamily: AppFonts.lato,
-                          fontSize: 10.sp,
-                          color: AppColors.black,
-                          letterSpacing: 1,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-
-              // 4. "FRONT VIEW" Pill
-              Positioned(
-                top: 16.h,
-                left: 0,
-                right: 0,
-                child: Center(
-                  child: Container(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 16.w,
-                      vertical: 8.h,
-                    ),
-                    decoration: BoxDecoration(
-                      color: Colors.black.withValues(alpha: 0.3),
-                      borderRadius: BorderRadius.circular(20.r),
-                      border: Border.all(
-                        color: Colors.white.withValues(alpha: 0.4),
-                        width: 1,
-                      ),
-                    ),
-                    child: Text(
-                      AppStrings.frontView,
-                      style: TextStyle(
-                        fontFamily: AppFonts.lato,
-                        fontSize: 10.sp,
-                        color: Colors.white,
-                        letterSpacing: 1,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-
-              // 5. Left Arrow
-              Positioned(
-                top: 200.h,
-                left: 32.w,
-                child: _buildImageControlArrow(Icons.chevron_left),
-              ),
-
-              // 6. Right Arrow
-              Positioned(
-                top: 200.h,
-                right: 32.w,
-                child: _buildImageControlArrow(Icons.chevron_right),
-              ),
-
-              // 7. Pagination Dots at bottom of image
-              Positioned(
-                bottom: 40.h,
-                left: 0,
-                right: 0,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      width: 24.w,
-                      height: 4.h,
+                  // 2. Left White Overlay Cutout
+                  Positioned(
+                    top: 0,
+                    left: 0,
+                    width: 125.w,
+                    height: 100.h,
+                    child: Container(
                       decoration: BoxDecoration(
-                        color: AppColors.yellowColor,
-                        borderRadius: BorderRadius.circular(2.r),
+                        color: AppColors.white,
+                        borderRadius: BorderRadius.only(
+                          bottomRight: Radius.circular(45.r),
+                        ),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "72",
+                            style: TextStyle(
+                              fontFamily: AppFonts.playfairDisplay,
+                              fontSize: 50.sp,
+                              fontWeight: FontWeight.w500,
+                              color: AppColors.black87,
+                              height: 1.0,
+                            ),
+                          ),
+                          8.verticalSpace,
+                          Text(
+                            AppStrings.skinScoreTitle,
+                            style: TextStyle(
+                              fontFamily: AppFonts.lato,
+                              fontSize: 12.sp,
+                              color: Colors.grey.shade600,
+                              fontWeight: FontWeight.w800,
+                              letterSpacing: 0.8,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                    4.horizontalSpace,
-                    _buildDot(),
-                    4.horizontalSpace,
-                    _buildDot(),
-                    4.horizontalSpace,
-                    _buildDot(),
-                  ],
-                ),
+                  ),
+
+                  // 3. Right White Overlay Cutout
+                  Positioned(
+                    top: 0,
+                    right: 0,
+                    width: 125.w,
+                    height: 100.h,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: AppColors.white,
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(45.r),
+                        ),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "03",
+                            style: TextStyle(
+                              fontFamily: AppFonts.playfairDisplay,
+                              fontSize: 50.sp,
+                              fontWeight: FontWeight.w500,
+                              color: AppColors.reportRed,
+                              height: 1.0,
+                            ),
+                          ),
+                          8.verticalSpace,
+                          Text(
+                            AppStrings.issuesFoundTitle,
+                            style: TextStyle(
+                              fontFamily: AppFonts.lato,
+                              fontSize: 12.sp,
+                              color: Colors.grey.shade600,
+                              fontWeight: FontWeight.w800,
+                              letterSpacing: 0.8,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+
+                  // 4. "FRONT VIEW" Pill (Dynamic based on current index)
+                  Positioned(
+                    top: 16.h,
+                    left: 0,
+                    right: 0,
+                    child: Center(
+                      child: Container(
+                        height: 36.h,
+                        width: 106.w,
+                        decoration: BoxDecoration(
+                          color: AppColors.white.withValues(alpha: 0.2),
+                          borderRadius: BorderRadius.circular(20.r),
+                          border: Border.all(color: AppColors.grey, width: 0.5),
+                        ),
+                        child: Center(
+                          child: Text(
+                            _viewTitles[_currentIndex],
+                            style: TextStyle(
+                              fontFamily: AppFonts.lato,
+                              fontSize: 14.sp,
+                              color: Colors.white,
+                              letterSpacing: 1.2,
+                              fontWeight: FontWeight.w800,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  // 5. Left Arrow
+                  Positioned(
+                    top: 336.h,
+                    left: 16.w,
+                    child: GestureDetector(
+                      onTap: () {
+                        if (_currentIndex > 0) {
+                          _pageController.previousPage(
+                            duration: const Duration(milliseconds: 300),
+                            curve: Curves.easeInOut,
+                          );
+                        }
+                      },
+                      child: _buildImageControlArrow(Icons.chevron_left),
+                    ),
+                  ),
+
+                  // 6. Right Arrow
+                  Positioned(
+                    top: 336.h,
+                    right: 16.w,
+                    child: GestureDetector(
+                      onTap: () {
+                        if (_currentIndex < images.length - 1) {
+                          _pageController.nextPage(
+                            duration: const Duration(milliseconds: 300),
+                            curve: Curves.easeInOut,
+                          );
+                        }
+                      },
+                      child: _buildImageControlArrow(Icons.chevron_right),
+                    ),
+                  ),
+
+                  // 7. Pagination Dots at bottom of image
+                  Positioned(
+                    bottom: 24.h,
+                    left: 0,
+                    right: 0,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: List.generate(images.length, (index) {
+                        return Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 2.w),
+                          child: _currentIndex == index
+                              ? Container(
+                                  width: 23.w,
+                                  height: 6.h,
+                                  decoration: BoxDecoration(
+                                    color: AppColors.yellowColor,
+                                    borderRadius: BorderRadius.circular(2.r),
+                                  ),
+                                )
+                              : _buildDot(),
+                        );
+                      }),
+                    ),
+                  ),
+                ],
               ),
-            ],
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }
@@ -228,13 +299,12 @@ class AnalysisFullReportScreen extends StatelessWidget {
   Widget _buildImageControlArrow(IconData icon) {
     return Container(
       padding: EdgeInsets.all(8.w),
+      height: 40.h,
+      width: 40.w,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: Colors.black.withValues(alpha: 0.4),
-        border: Border.all(
-          color: Colors.white.withValues(alpha: 0.2),
-          width: 1,
-        ),
+        color: AppColors.white.withValues(alpha: 0.2),
+        border: Border.all(color: Colors.white, width: 1),
       ),
       child: Icon(icon, color: Colors.white, size: 20.w),
     );
@@ -253,7 +323,7 @@ class AnalysisFullReportScreen extends StatelessWidget {
 
   Widget _buildSummary() {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 24.w),
+      padding: EdgeInsets.symmetric(horizontal: 20.w),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -266,14 +336,14 @@ class AnalysisFullReportScreen extends StatelessWidget {
               color: AppColors.black,
             ),
           ),
-          16.verticalSpace,
+          8.verticalSpace,
           Text(
             AppStrings.frAnalysisSummaryText,
             style: TextStyle(
               fontFamily: AppFonts.lato,
-              fontSize: 14.sp,
+              fontSize: 16.sp,
               color: Colors.grey.shade600,
-              height: 1.6,
+              height: 1,
             ),
           ),
         ],
@@ -370,29 +440,33 @@ class AnalysisFullReportScreen extends StatelessWidget {
             style: TextStyle(
               fontFamily: AppFonts.playfairDisplay,
               fontSize: 24.sp,
-              fontWeight: FontWeight.bold,
-              color: AppColors.sectionTitleBrown,
+              fontWeight: FontWeight.w700,
+              color: AppColors.orange,
             ),
           ),
-          32.verticalSpace,
+          16.verticalSpace,
           _buildFindingItem(
             AppStrings.acneBreakoutsTitle,
             AppStrings.mediumSeverity,
-            AppColors.tagMediumBg,
-            AppColors.tagMediumText,
+            AppColors.gold.withValues(alpha: 0.12),
+            AppColors.orange,
             AppStrings.acneBreakoutsText,
             AppStrings.acneBreakoutsQuote,
           ),
-          32.verticalSpace,
+          28.verticalSpace,
+          Divider(),
+          28.verticalSpace,
           _buildFindingItem(
             AppStrings.enlargedPoresTitle,
             AppStrings.lowSeverity,
-            AppColors.tagLowBg,
-            AppColors.tagLowText,
+            AppColors.darkGreen.withValues(alpha: 0.15),
+            AppColors.darkGreen,
             AppStrings.enlargedPoresText,
             AppStrings.enlargedPoresQuote,
           ),
-          32.verticalSpace,
+          28.verticalSpace,
+          Divider(),
+          28.verticalSpace,
           _buildFindingItem(
             AppStrings.darkCirclesTitle,
             AppStrings.lowSeverity,
@@ -440,7 +514,7 @@ class AnalysisFullReportScreen extends StatelessWidget {
                 tag,
                 style: TextStyle(
                   fontFamily: AppFonts.lato,
-                  fontSize: 10.sp,
+                  fontSize: 12.sp,
                   fontWeight: FontWeight.w700,
                   color: tagColor,
                 ),
@@ -448,13 +522,13 @@ class AnalysisFullReportScreen extends StatelessWidget {
             ),
           ],
         ),
-        12.verticalSpace,
+        12.5.verticalSpace,
         Text(
           text,
           style: TextStyle(
             fontFamily: AppFonts.lato,
-            fontSize: 14.sp,
-            color: Colors.grey.shade600,
+            fontSize: 16.sp,
+            color: AppColors.darkGrey,
             height: 1.5,
           ),
         ),
@@ -463,7 +537,7 @@ class AnalysisFullReportScreen extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 20.h),
           width: double.infinity,
           decoration: BoxDecoration(
-            color: AppColors.quoteBg,
+            color: AppColors.lightGrey,
             borderRadius: BorderRadius.circular(16.r),
           ),
           child: Text(
