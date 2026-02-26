@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import '../../core/consts/app_colors.dart';
 import '../../core/consts/app_fonts.dart';
 import '../../core/consts/app_images.dart';
+import '../../core/utils/widgets/feature_bottom_navigation.dart';
 import '../../view_models/importance_view_model.dart';
 
 class ImportanceScreen extends StatelessWidget {
@@ -101,64 +102,16 @@ class ImportanceScreen extends StatelessWidget {
                       24.verticalSpace,
 
                       // Back & Next buttons
-                      Row(
-                        children: [
-                          // Back button
-                          Expanded(
-                            child: SizedBox(
-                              height: 54.h,
-                              child: OutlinedButton(
-                                onPressed: () => Navigator.pop(context),
-                                style: OutlinedButton.styleFrom(
-                                  side: BorderSide(
-                                    color: AppColors.white,
-                                    width: 1.5.w,
-                                  ),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(12.r),
-                                  ),
-                                ),
-                                child: Text(
-                                  data.backButton,
-                                  style: TextStyle(
-                                    fontSize: 18.sp,
-                                    fontWeight: FontWeight.w600,
-                                    color: AppColors.white,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-
-                          16.horizontalSpace,
-
-                          // Next button
-                          Expanded(
-                            child: SizedBox(
-                              height: 54.h,
-                              child: ElevatedButton(
-                                onPressed: () {
-                                  // TODO: Navigate to next screen
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: AppColors.black,
-                                  foregroundColor: AppColors.white,
-                                  elevation: 0,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(12.r),
-                                  ),
-                                ),
-                                child: Text(
-                                  data.nextButton,
-                                  style: TextStyle(
-                                    fontSize: 18.sp,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
+                      FeatureBottomNavigation(
+                        onNextPressed: () {
+                          // TODO: Navigate to next screen
+                        },
+                        backButtonText: data.backButton,
+                        backButtonBorderColor: AppColors.white,
+                        backButtonBorderWidth: 1.5.w,
+                        backButtonColor: AppColors.white,
+                        nextButtonText: data.nextButton,
+                        nextButtonBackgroundColor: AppColors.black,
                       ),
 
                       20.verticalSpace,

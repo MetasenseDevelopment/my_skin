@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import '../../core/consts/app_colors.dart';
 import '../../core/consts/app_fonts.dart';
 import '../../core/consts/app_images.dart';
+import '../../core/utils/widgets/feature_bottom_navigation.dart';
 import '../../view_models/introduction_view_model.dart';
 
 class IntroductionScreen extends StatelessWidget {
@@ -126,71 +127,19 @@ class IntroductionScreen extends StatelessWidget {
                       32.verticalSpace,
 
                       // Back & Next buttons
-                      Row(
-                        children: [
-                          // Back button
-                          Expanded(
-                            child: SizedBox(
-                              height: 54.h,
-                              child: OutlinedButton(
-                                onPressed: () => Navigator.pop(context),
-                                style: OutlinedButton.styleFrom(
-                                  side: BorderSide(
-                                    color: AppColors.white,
-                                    width: 1.w,
-                                  ),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(12.r),
-                                  ),
-                                ),
-                                child: Text(
-                                  'Back', // Hardcoded back to simplify model
-                                  style: TextStyle(
-                                    fontFamily: AppFonts.lato,
-                                    fontSize: 16.sp,
-                                    fontWeight: FontWeight.w600,
-                                    color: AppColors.white,
-                                  ),
-                                ),
-                              ),
+                      FeatureBottomNavigation(
+                        onNextPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const ScanScreen(),
                             ),
-                          ),
-
-                          16.horizontalSpace,
-
-                          // Next button
-                          Expanded(
-                            child: SizedBox(
-                              height: 54.h,
-                              child: ElevatedButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => const ScanScreen(),
-                                    ),
-                                  );
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: AppColors.black,
-                                  foregroundColor: AppColors.white,
-                                  elevation: 0,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(12.r),
-                                  ),
-                                ),
-                                child: Text(
-                                  data.nextButton,
-                                  style: TextStyle(
-                                    fontFamily: AppFonts.lato,
-                                    fontSize: 16.sp,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
+                          );
+                        },
+                        backButtonBorderColor: AppColors.white,
+                        backButtonColor: AppColors.white,
+                        nextButtonBackgroundColor: AppColors.black,
+                        nextButtonText: data.nextButton,
                       ),
 
                       20.verticalSpace,

@@ -35,7 +35,7 @@ class QuestionaireScreen3 extends StatelessWidget {
               MaterialPageRoute(builder: (context) => const MedicsScreen()),
             );
           },
-          tiltColor: AppColors.yellowColor,
+          tiltColor: AppColors.accentYellow,
           tiltAngle: 0.1, // Tilted right
         );
       },

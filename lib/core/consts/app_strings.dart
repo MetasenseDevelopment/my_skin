@@ -225,4 +225,55 @@ class AppStrings {
       ' has identified several inefficiencies in your routine, a few of which are shown above.';
   static const String auditReportDisclaimer =
       '* This report is based on your\nanswers, skin analysis and product\nselection.';
+  // Feature Fact screen
+  static const String factTitle = 'FACT';
+  static const String factDescription1 =
+      'Your\nroutine\ndoesn\'t have to\nbe complicated,\nit just needs\n';
+  static const String factDescription2 = 'optimization.';
+  static const String factFooter1 = 'With ';
+  static const String factFooter2 = 'MySkin';
+  static const String factFooter3 = ', your\napproach adapts.';
+  // JCD Feature screen
+  static const String jcdJournal = 'Journal of Clinical Dermatology';
+  static const String jcdTitle =
+      'Clinical evidences of benefits\nfrom an advanced skin care\nroutine in comparison with a\nsimple routine.';
+  static const String jcdDescription =
+      'Findings advocate for using a relevant\ndaily routine as it demonstrates the\nvisible skin benefits over a short period,\nwhile driving the creation of habits for\nthe prevention of aging signs.';
+  static const String jcdAuthor = 'Messaraa C, Robertson N et al. 2020';
+
+  // Skin Care Feature screen
+  static const String skinCareTitle1 = 'Skin-care,\n';
+  static const String skinCareTitle2 = 'customized ';
+  static const String skinCareTitle3 = 'for\nyour skin.';
+  static const String skinCareDesc1 = 'MySkin';
+  static const String skinCareDesc2 =
+      ' continuously monitors your\nskin and delivers intelligent, actionable\nplans in real time.';
+
+  static const String routineMorning = 'Morning Routine';
+  static const String routineAfternoon = 'Afternoon Routine';
+  static const String routineEvening = 'Evening Routine';
+
+  static const String supplementsLabel = 'SUPPLEMENTS';
+  static const String vitaminCProduct = 'Vitamin C Brightening Capsule';
+  static const String vitaminCTime = '1 min • Apply after waking up';
+  static const String vitaminCInstruction = 'Take one capsule with water';
+  static const String vitaminCDesc =
+      'Boosts energy, supports wellness, and keeps skin bright.';
+
+  static const String moisturizeLabel = 'MOISTURIZE';
+  static const String nightCreamProduct = 'Anti-Wrinkle Night Cream';
+  static const String nightCreamTime = 'Overnight • Apply to face and neck';
+  static const String nightCreamInstruction =
+      'Massage for 60 seconds circular motions.';
+  static const String nightCreamDesc =
+      'Seal in treatments and support the skin\'s natural repair process while you sleep.';
+  static const String missedStep = 'Missed You can still do this step';
+
+  // Graph Screen
+  static const String graphScreenTitle = '3x';
+  static const String graphScreenSubtitle =
+      'Evidence-based\nimprovement in just\n90 days.';
+  static const String graphScreenFooterTitle = 'Numbers\ndon\'t lie.';
+  static const String graphScreenFooterDesc =
+      'Our internal 12-week observational study\nobserved a 300% improvement in skin\nbarrier resilience and hydration among\nusers who consistently followed MySkin\nrituals.';
 }

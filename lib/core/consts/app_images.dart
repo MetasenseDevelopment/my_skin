@@ -30,4 +30,5 @@ class AppImages {
   static const String questionaire1 = 'assets/images/questionaire1.png';
   static const String questionaire2 = 'assets/images/questionaire2.png';
   static const String questionaire3 = 'assets/images/questionaire3.png';
+  static const String jcdFeatureBg = 'assets/images/jcdFeatureBGImage.png';
 }

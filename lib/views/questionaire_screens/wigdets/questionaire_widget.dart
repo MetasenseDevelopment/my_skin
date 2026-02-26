@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../core/consts/app_colors.dart';
 import '../../../core/consts/app_fonts.dart';
+import '../../../core/utils/widgets/feature_bottom_navigation.dart';
 
 class QuestionaireWidget extends StatelessWidget {
   final String imagePath;
@@ -184,67 +185,13 @@ class QuestionaireWidget extends StatelessWidget {
                   Spacer(),
 
                   // Bottom Buttons
-                  Row(
-                    children: [
-                      // Back button
-                      Expanded(
-                        child: SizedBox(
-                          height: 54.h,
-                          child: OutlinedButton(
-                            onPressed: () => Navigator.pop(context),
-                            style: OutlinedButton.styleFrom(
-                              backgroundColor: Colors.white.withValues(
-                                alpha: 0.15,
-                              ),
-                              side: BorderSide(
-                                color: AppColors.white,
-                                width: 1.w,
-                              ),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12.r),
-                              ),
-                            ),
-                            child: Text(
-                              'Back',
-                              style: TextStyle(
-                                fontFamily: AppFonts.lato,
-                                fontSize: 16.sp,
-                                fontWeight: FontWeight.w600,
-                                color: AppColors.white,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-
-                      16.horizontalSpace,
-
-                      // Next button
-                      Expanded(
-                        child: SizedBox(
-                          height: 54.h,
-                          child: ElevatedButton(
-                            onPressed: onNext,
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: AppColors.black87,
-                              foregroundColor: AppColors.white,
-                              elevation: 0,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12.r),
-                              ),
-                            ),
-                            child: Text(
-                              'Next',
-                              style: TextStyle(
-                                fontFamily: AppFonts.lato,
-                                fontSize: 16.sp,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+                  FeatureBottomNavigation(
+                    onNextPressed: onNext,
+                    backButtonBackgroundColor: Colors.white.withValues(
+                      alpha: 0.15,
+                    ),
+                    backButtonBorderColor: AppColors.white,
+                    backButtonColor: AppColors.white,
                   ),
                   20.verticalSpace,
                 ],

@@ -5,6 +5,8 @@ import 'package:my_skin/view_models/scan_view_model.dart';
 import 'package:my_skin/view_models/camera_view_model.dart';
 import 'package:my_skin/view_models/analysis_view_model.dart';
 import 'package:my_skin/views/empathy_screen/empathy_screen.dart';
+import 'package:my_skin/views/feature_integration_screens/feature_audit_screen.dart';
+import 'package:my_skin/views/welcome_screen/welcome_screen.dart';
 import 'package:provider/provider.dart';
 import 'core/consts/app_colors.dart';
 import 'core/consts/app_fonts.dart';
@@ -55,7 +57,7 @@ class MySkinApp extends StatelessWidget {
             fontFamily: AppFonts.lato,
             scaffoldBackgroundColor: AppColors.white,
           ),
-          home: const EmpathyScreen(),
+          home: const FeatureAuditScreen(),
         );
       },
     );
