@@ -19,7 +19,7 @@ publish_to: "none" # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ^3.11.0
+  sdk: ^3.9.2
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -38,7 +38,8 @@ dependencies:
   iconify_flutter: ^0.0.7
   camera: ^0.11.4
   image_picker: ^1.2.1
-  liquid_glass_renderer: any
+  liquid_glass_renderer: ^0.2.0-dev.4
+  liquid_glass_easy: ^1.1.1
 
 dev_dependencies:
   flutter_test:
@@ -75,6 +76,13 @@ flutter:
         - asset: assets/fonts/PlayfairDisplay-Bold.ttf
           weight: 700
         - asset: assets/fonts/PlayfairDisplay-Italic.ttf
+          weight: 400
+          style: italic
+    - family: DMSerifDisplay
+      fonts:
+        - asset: assets/fonts/DMSerifDisplay-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/DMSerifDisplay-Italic.ttf
           weight: 400
           style: italic
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:my_skin/views/finalize_screen/finalize_screen.dart';
 import '../../core/consts/app_colors.dart';
 import '../../core/consts/app_fonts.dart';
 import '../../core/consts/app_images.dart';

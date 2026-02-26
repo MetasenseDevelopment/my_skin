@@ -3,4 +3,5 @@ class AppFonts {
 
   static const String lato = 'Lato';
   static const String playfairDisplay = 'PlayfairDisplay';
+  static const String dmSerifDisplay = 'DMSerifDisplay';
 }
