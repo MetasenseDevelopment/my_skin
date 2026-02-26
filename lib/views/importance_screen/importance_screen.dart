@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:my_skin/views/introduction_screen/introduction_screen.dart';
 import 'package:provider/provider.dart';
 import '../../core/consts/app_colors.dart';
 import '../../core/consts/app_fonts.dart';
@@ -105,6 +106,12 @@ class ImportanceScreen extends StatelessWidget {
                       FeatureBottomNavigation(
                         onNextPressed: () {
                           // TODO: Navigate to next screen
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const IntroductionScreen(),
+                            ),
+                          );
                         },
                         backButtonText: data.backButton,
                         backButtonBorderColor: AppColors.white,
