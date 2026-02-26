@@ -17,6 +17,7 @@ class AppImages {
   static const String roseLogo = 'assets/images/rose_logo.png';
   static const String empathyBg = 'assets/images/empathyScreenBG.png';
   static const String empathyCard = 'assets/images/empathycardImage.png';
+  static const String auditBg = 'assets/images/auditBGImage.png';
 
   // Carousel order: 2 → 3 → 1
   static const List<String> userInfoCarousel = [
@@ -25,4 +26,8 @@ class AppImages {
     userInfo3,
     userInfo1,
   ];
+
+  static const String questionaire1 = 'assets/images/questionaire1.png';
+  static const String questionaire2 = 'assets/images/questionaire2.png';
+  static const String questionaire3 = 'assets/images/questionaire3.png';
 }

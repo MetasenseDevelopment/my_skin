@@ -39,6 +39,7 @@ class AppColors {
   static const Color progressRed = Color(0xFFE53935);
   static const Color sectionTitleBrown = Color(0xFFC07C5D);
   static const Color orange = Color(0xFFC1784D);
+  static const Color darkRed = Color(0xFF6E2F2F);
   static const Color tagMediumBg = Color(0xFFFFF3E0);
   static const Color tagMediumText = Color(0xFFE65100);
   static const Color tagLowBg = Color(0xFFE8F5E9);

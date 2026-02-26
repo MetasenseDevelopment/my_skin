@@ -4,6 +4,7 @@ import '../../core/consts/app_colors.dart';
 import '../../core/consts/app_fonts.dart';
 import '../../core/consts/app_images.dart';
 import '../../core/consts/app_strings.dart';
+import '../questionaire_screens/questionaire_screen_1.dart';
 
 class EmpathyScreen extends StatelessWidget {
   const EmpathyScreen({super.key});
@@ -102,7 +103,12 @@ class EmpathyScreen extends StatelessWidget {
                     height: 54.h,
                     child: ElevatedButton(
                       onPressed: () {
-                        // Action for Next
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const QuestionaireScreen1(),
+                          ),
+                        );
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.white,

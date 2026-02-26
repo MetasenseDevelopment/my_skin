@@ -175,4 +175,54 @@ class AppStrings {
   static const String empathyTitle2 = '& that\'s\ncompletely\nnormal.';
   static const String empathyText =
       'MySkin helps guide\nyou gently & effectively\ntowards a clearer,\nhealthier, more\nconfident skin';
+
+  // Questionnaire screens
+  static const String questionaire1Title = 'QUESTION 01';
+  static const String questionaire1Question = 'What is your main\nskin goal?';
+  static const String q1Option1 = 'Reduce scars';
+  static const String q1Option2 = 'Minimize dark spots';
+  static const String q1Option3 = 'Manage dryness / Oiliness';
+  static const String q1Option4 = 'Target fine lines and wrinkles.';
+
+  static const String questionaire2Title = 'QUESTION 02';
+  static const String questionaire2Question =
+      'How complex is your\ncurrent skin routine?';
+  static const String q2Option1 = 'Very Simple (2-3 Steps)';
+  static const String q2Option2 = 'Balanced (4-5 Steps)';
+  static const String q2Option3 = 'Detailed (>6 Steps)';
+  static const String q2Option4 = 'Varies daily';
+
+  static const String questionaire3Title = 'QUESTION 03';
+  static const String questionaire3Question =
+      'Does your skin routine\nseem overwhelming?';
+  static const String q3Option1 = 'Some times';
+  static const String q3Option2 = 'Almost always';
+  static const String q3Option3 = 'Not really, I enjoy it!';
+  static const String q3Option4 = 'I stopped caring.';
+
+  // Medics screen
+  static const String medicsTitle1 = 'Which of\nthese ';
+  static const String medicsTitleItalic = 'products\n';
+  static const String medicsTitle2 = 'do you use?';
+  static const String medicsSubtitle =
+      'We\'ll use your selection against your\nskin analysis to see if youre using the\nright products.';
+  static const String typeProductHint = 'Type product...';
+  static const String addLabel = 'ADD';
+  static const String addOtherLabel = 'Add other....';
+  static const String analyzingWait = 'Analyzing please wait....';
+
+  // Feature Audit screen
+  static const String auditHeader = 'AUDIT';
+  static const String regimenScore = 'REGIMEN SCORE';
+  static const String auditPercentage = '42%';
+  static const String optimized = 'OPTIMIZED';
+  static const String criticalInefficiencies = 'CRITICAL\nINEFFICIENCIES';
+  static const String productMismatch = 'PRODUCT MISMATCH';
+  static const String somethingElse = 'SOMETHING ELSE';
+  static const String myskinProvides =
+      'provides instant product verification and safe alternatives using artificial intelligence.';
+  static const String myskinIdentified =
+      ' has identified several inefficiencies in your routine, a few of which are shown above.';
+  static const String auditReportDisclaimer =
+      '* This report is based on your\nanswers, skin analysis and product\nselection.';
 }
