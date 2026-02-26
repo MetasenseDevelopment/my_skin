@@ -175,4 +175,37 @@ class AppStrings {
   static const String empathyTitle2 = '& that\'s\ncompletely\nnormal.';
   static const String empathyText =
       'MySkin helps guide\nyou gently & effectively\ntowards a clearer,\nhealthier, more\nconfident skin';
+
+  // SPlach Screen
+  static const String splashYour = 'Your \n';
+  static const String splashSkinJourney = 'Skin Journey\n';
+  static const String splashBeginsHere = 'begins here.';
+  static const List<String> splashLoadingTexts = [
+    'CREATING YOUR PERSONALIZED\nSKIN PLANS', // dot 0
+    'ORGANIZING YOUR EXERCISES', // dot 1
+    'TRACKING YOUR PROGRESS', // dot 2
+  ];
+  static const String finalizeTitle = 'Your personalized skin-care is ready!';
+
+  /// Authentication screen
+  static const String signUpWithEmail = 'Sign Up with Email';
+  static const String signUpWithGoogle = 'Sign Up with Google';
+  static const String signUpWithApple = 'Sign Up with Apple';
+  static const String alreadyHaveAccount = 'Already have an account? ';
+  static const String dontHaveAccount = "Don't have an account? ";
+  static const String emailLabel = 'EMAIL';
+  static const String emailHint = 'Enter Email';
+  static const String passwordLabel = 'PASSWORD';
+  static const String passwordHint = 'Enter password';
+  static const String signUp = 'Sign Up';
+  static const String confirmPasswordLabel = 'CONFIRM PASSWORD';
+  static const String confirmPasswordHint = 'Re-enter password';
+  static const String passwordRecoveryTitle = 'Password Recovery';
+  static const String recoryLink =
+      'Enter the email linked to your account to\nreceive a password recovery link.';
+  static const String otpTitle = 'Enter OTP';
+  static const String otpSubtitle =
+      'We have sent the verification code to your email address';
+      static const String didntReceiveIt = 'Didn’t receive it?';
+  static const String resendCode = 'Resend Code';
 }

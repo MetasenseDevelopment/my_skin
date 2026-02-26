@@ -19,6 +19,12 @@ class AppColors {
   static const Color disabledGrey = Color(0xFFF2F2F2);
   static const Color disabledTextGrey = Color(0xFFCCCCCC);
   static const Color yellowColor = Color(0xFFD3A860);
+  static const Color goldColor = Color(0xFFD3A860);
+  static const Color primaryBlack = Color(0xFF1C1C1C);
+  static const Color orangeColor = Color(0xFFC1784D);
+  static const Color lightOrangeColor = Color(0xFFD3A78D);
+  static const Color secondaryGrey = Color(0xFFC9C9C9);
+  static const Color deepGrey = Color(0xFF545353);
 
   static const Gradient primaryGradient = LinearGradient(
     begin: Alignment.topCenter,

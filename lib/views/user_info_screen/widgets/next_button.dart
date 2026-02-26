@@ -7,11 +7,23 @@ class NextButton extends StatelessWidget {
   final bool isEnabled;
   final VoidCallback onPressed;
 
+  // Optional text styling
+  final double? fontSize;
+  final double? letterSpacing;
+  final double? textHeight;
+  final String? fontFamily;
+  final FontWeight? fontWeight;
+
   const NextButton({
     super.key,
     required this.text,
     required this.isEnabled,
     required this.onPressed,
+    this.fontSize,
+    this.letterSpacing,
+    this.textHeight,
+    this.fontFamily,
+    this.fontWeight,
   });
 
   @override
@@ -33,7 +45,13 @@ class NextButton extends StatelessWidget {
         ),
         child: Text(
           text,
-          style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
+          style: TextStyle(
+            fontSize: fontSize?.sp ?? 18.sp, // default 18.sp
+            fontWeight: fontWeight ?? FontWeight.bold,
+            fontFamily: fontFamily,
+            letterSpacing: letterSpacing,
+            height: textHeight,
+          ),
         ),
       ),
     );

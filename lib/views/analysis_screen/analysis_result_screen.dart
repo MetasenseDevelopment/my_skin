@@ -52,8 +52,8 @@ class AnalysisResultScreen extends StatelessWidget {
 
           // 2. Main Content
           SafeArea(
-        top: false,
-        child: Padding(
+            top: false,
+            child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 24.w),
               child: Column(
                 children: [

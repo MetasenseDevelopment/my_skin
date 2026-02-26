@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:my_skin/view_models/auths_models/auth_view_model.dart';
 import 'package:my_skin/view_models/introduction_view_model.dart';
 import 'package:my_skin/view_models/scan_view_model.dart';
 import 'package:my_skin/view_models/camera_view_model.dart';
 import 'package:my_skin/view_models/analysis_view_model.dart';
+import 'package:my_skin/view_models/splash_view_model.dart';
+import 'package:my_skin/view_models/subscription_view_model.dart';
 import 'package:my_skin/views/introduction_screen/introduction_screen.dart';
 import 'package:provider/provider.dart';
 import 'core/consts/app_colors.dart';
@@ -25,6 +28,9 @@ void main() {
         ChangeNotifierProvider(create: (_) => ScanViewModel()),
         ChangeNotifierProvider(create: (_) => CameraViewModel()),
         ChangeNotifierProvider(create: (_) => AnalysisViewModel()),
+        ChangeNotifierProvider(create: (_) => SplashViewModel()),
+        ChangeNotifierProvider(create: (_) => SubscriptionViewModel()),
+        ChangeNotifierProvider(create: (_) => AuthProvider()),
       ],
       child: const MySkinApp(),
     ),
